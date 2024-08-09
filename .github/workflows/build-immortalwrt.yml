@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build ImmortalWrt
+name: Build ImmortalWrt-opensource
 
 permissions: write-all
 # 开启写权限，防止无法上传到release
@@ -19,7 +19,7 @@ on:
       USE_NX30PRO_EEPROM:
         description: 'Use nx30pro eeprom'
         required: true
-        default: true
+        default: false
         type: boolean
       USE_52MHZ:
         description: 'Use 52MHz max-frequency'
@@ -29,7 +29,7 @@ on:
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
-  REPO_BRANCH: openwrt-23.05
+  REPO_BRANCH: master
   FREE_DISK_SH: scripts/free_disk_space.sh
   ENV_SH: scripts/environment.sh
   DIY_SH: scripts/diy.sh
