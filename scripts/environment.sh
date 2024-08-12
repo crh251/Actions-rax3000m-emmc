@@ -7,4 +7,6 @@ sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bis
   python3-pyelftools qemu-utils re2c rsync scons squashfs-tools subversion swig \
   texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
 
+echo 'immortalwrt require env:'
+
 sudo bash -c 'bash <(curl -s https://build-scripts.immortalwrt.org/init_build_environment.sh)'
