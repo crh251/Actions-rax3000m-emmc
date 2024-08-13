@@ -166,8 +166,8 @@ jobs:
       run: |
         # echo -e "### immortalwrt-23.05-SNAPSHOT-rax3000m-emmc-ubootmod" >> release.txt
         echo "source: ${REPO_URL}" >> release.txt
-        echo "USE_NX30PRO_EEPROM: ${USE_NX30PRO_EEPROM}" >> release.txt
-        echo "USE_52MHZ: ${USE_52MHZ}" >> release.txt
+        echo "USE_NX30PRO_EEPROM: ${{ env.USE_NX30PRO_EEPROM }}" >> release.txt
+        echo "USE_52MHZ: ${{ env.USE_52MHZ }}" >> release.txt
         eeprom_status=""
         if [ -e openwrt/target/linux/mediatek/filogic/base-files/lib/firmware/mediatek/nx30pro_eeprom.bin ] ; then
           echo "- eeprom 使用 H3C NX30 Pro 提取版本" >> release.txt
@@ -178,7 +178,7 @@ jobs:
         fi
         max_frequency=$(($(grep -oP "max-frequency = <\K[0-9]*" openwrt/target/linux/mediatek/dts/mt7981b-cmcc-rax3000m-emmc-ubootmod.dts) / 1000000))
         echo "- 使用闪存频率: ${max_frequency}MHz" >> release.txt
-        release_tag=$(date +"%Y_%m_%d-openwrt-rax3000m-emmc-ubootmod-USE_NX30PRO_EEPROM_${USE_NX30PRO_EEPROM}-USE_52MHZ_${USE_52MHZ}")
+        release_tag=$(date +"%Y_%m_%d-openwrt-rax3000m-emmc-ubootmod-USE_NX30PRO_EEPROM_${{ env.USE_NX30PRO_EEPROM }}-USE_52MHZ_${{ env.USE_52MHZ }}")
         echo "release_tag=${release_tag}" >> $GITHUB_OUTPUT
         echo "status=success" >> $GITHUB_OUTPUT
 
